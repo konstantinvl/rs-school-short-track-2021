@@ -16,11 +16,14 @@
  */
 function getMatrixElementsSum(matrix) {
   const arr = matrix.map((array, index, matr) => array.reduce((result, num, i) => {
-    if (!(matr[index - 1][i] === 0)) {
+    if (index - 1 === -1) {
       return result + num;
     }
-    return result;
-  }));
+    if (matr[index - 1][i] === 0) {
+      return result;
+    }
+    return result + num;
+  }, 0));
 
   return arr.reduce((a, b) => a + b);
 }
