@@ -12,16 +12,41 @@
  */
 
 class Queue {
-  get size() {
-    throw new Error('Not implemented');
+  constructor() {
+    this.queue = {
+      value: null,
+      next: null,
+    };
+    this.head = this.queue;
+    this.tail = this.queue;
+    this.long = 0;
   }
 
-  enqueue(/* element */) {
-    throw new Error('Not implemented');
+  ListNode(element) {
+    return {
+      value: element,
+      next: null,
+    };
+  }
+
+  get size() {
+    return this.long;
+  }
+
+  enqueue(element) {
+    if (this.head.value === null) {
+      this.head = this.ListNode(element);
+    } else {
+      this.tail = this.ListNode(element);
+      this.tail = this.tail.next;
+    }
+    this.long++;
   }
 
   dequeue() {
-    throw new Error('Not implemented');
+    const top = this.head;
+    this.head = this.head.next;
+    return top.value;
   }
 }
 
