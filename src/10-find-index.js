@@ -12,12 +12,16 @@
  *
  */
 function findIndex(array, value) {
-  return array.reduce((sum, item, index) => {
+  /* / return array.reduce((sum, item, index) => {
     if (item === value) {
       return sum + index;
     }
     return sum + 0;
-  }, 0);
+  }, 0); / */
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === value) return i;
+  }
+  return null;
 }
 
 module.exports = findIndex;
