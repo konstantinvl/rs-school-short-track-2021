@@ -12,16 +12,21 @@
  *
  */
 function findIndex(array, value) {
-  /* / return array.reduce((sum, item, index) => {
-    if (item === value) {
-      return sum + index;
+  let start = 0;
+  let end = array.length - 1;
+  let aim = Math.trunc((start + end) / 2);
+  while (array[aim] !== value) {
+    if (array[aim] > value) {
+      end = aim;
+      aim = Math.trunc((start + end) / 2);
+    } else {
+      start = aim;
+      aim = Math.trunc((start + end) / 2);
     }
-    return sum + 0;
-  }, 0); / */
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === value) return i;
+    if (array[aim + 1] === value) return aim + 1;
+    if (array[aim - 1] === value) return aim - 1;
   }
-  return null;
+  return aim;
 }
 
 module.exports = findIndex;
